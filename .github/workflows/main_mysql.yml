@@ -9,6 +9,7 @@ jobs:
     
 # setting up environment variables
     env:
+    # these variables are user defined
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: foo
       MYSQL_USER: user1
@@ -24,6 +25,7 @@ jobs:
 
         # accessing the variables
         env:
+        # here MYSQL_ROOT_PASSWORD etc are predefined for the image container
           MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
           MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
           MYSQL_USER: ${{ env.MYSQL_USER }}
@@ -38,7 +40,7 @@ jobs:
           
     steps:
       - name: Show Docker containers
-        run: docker ps -a
+        run: docker ps -a   # ps is to list all the processes
 
       - name: Wait for MySQL to be ready
         run: |
